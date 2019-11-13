@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     var topics = ["pizza", "burgers"];
+
     
     
 
@@ -31,16 +32,21 @@ $(document).ready(function () {
                 var results = response.data;
                 console.log(results);
                 for(var i = 0; i < results.length; i++){
-                    if (results[i].rating !== "r"){
+                    if (results[i].rating !== "r"){                       
                         var imgDiv = $("<div>");
                         imgDiv.addClass("float");
                         var rating = results[i].rating;
                         var p = $("<p>").text("Rating: " + rating);
                         var foodImg = $("<img>");
                         foodImg.attr("src", results[i].images.fixed_height_still.url);
+                        foodImg.attr("alt", "food image");
+                        foodImg.attr("data-still" , results[i].images.fixed_height_still.url)
+                        foodImg.attr("data-animate", results[i].images.fixed_height.url)
+                        foodImg.attr("data-state", "still")
+                        foodImg.addClass("gif");
                         imgDiv.append(p);
                         imgDiv.append(foodImg);
-                        $(".images").append(imgDiv);
+                        $(".image-display").append(imgDiv);
                     }
                 }
 
@@ -49,9 +55,12 @@ $(document).ready(function () {
 
 
 
+    $("body").on("click", ".gif", function() {
+   
+        var state = $(this).attr("data-state");
+        console.log(state);
 
-
-
+    });
 
 
 });
