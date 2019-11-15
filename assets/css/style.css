@@ -7,9 +7,14 @@ button {
     min-width: 100px;
     margin: 10px;
     text-align: center;
+    border-radius: 5px;
 }
 
 .float {   
     float: left;
     margin: 10px 10px 10px 0px;       
+}
+
+.user-add {
+    margin-top: 70px;
 }
