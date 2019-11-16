@@ -13,7 +13,7 @@ $(document).ready(function () {
                     click: function () {
                         $(".image-display").empty();
                         var searchVal = $(this).text();
-                        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +
+                        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
                             searchVal + "&api_key=Rti16DDOi8KwkyUPSv7rAJca8jFi3Uve&limit=10";
 
                         $.ajax({
@@ -73,7 +73,7 @@ $(document).ready(function () {
         var searchVal = $("#user-request").val();
         topics.push(searchVal);
         makeButtons();
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
             searchVal + "&api_key=Rti16DDOi8KwkyUPSv7rAJca8jFi3Uve&limit=10";
 
         $.ajax({
