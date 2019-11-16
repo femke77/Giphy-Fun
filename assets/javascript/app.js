@@ -4,27 +4,29 @@ $(document).ready(function () {
     var topics = ["pizza", "burgers", "ice cream", "cake", "cupcakes", "muffins", "cereal", "pasta", "cookies", "steak", "oranges", "fries", "fried chicken",
                   "cotton candy", "coffee", "sandwich"];
 
+    function makeButtons() {
+        $(".buttons").empty();
+        for (var i = 0; i < topics.length; i++) {
+            $(".buttons").append(
+                $("<button/>", {
+                    text: topics[i],
+                    click: function () {
+                        $(".image-display").empty();
+                        var searchVal = $(this).text();
+                        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +
+                            searchVal + "&api_key=Rti16DDOi8KwkyUPSv7rAJca8jFi3Uve&limit=10";
 
-    for (var i = 0; i < topics.length; i++) {
-        $(".buttons").append(
-            $("<button/>", {
-                text: topics[i],
-                click: function() {
-                    $(".image-display").empty();
-                    var searchVal = $(this).text();
-                    var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +
-                        searchVal + "&api_key=Rti16DDOi8KwkyUPSv7rAJca8jFi3Uve&limit=10";
-            
-                    $.ajax({
-                        url: queryURL,
-                        method: "GET"
-                    })
-                        .then(function (response) {
-                            displayImages(response)
-                        });
-                }
-            })
-        );
+                        $.ajax({
+                            url: queryURL,
+                            method: "GET"
+                        })
+                            .then(function (response) {
+                                displayImages(response)
+                            });
+                    }
+                })
+            );
+        }
     }
 
     function displayImages(response) {
@@ -69,6 +71,8 @@ $(document).ready(function () {
         e.preventDefault();
         $(".image-display").empty();
         var searchVal = $("#user-request").val();
+        topics.push(searchVal);
+        makeButtons();
         var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +
             searchVal + "&api_key=Rti16DDOi8KwkyUPSv7rAJca8jFi3Uve&limit=10";
 
@@ -81,6 +85,8 @@ $(document).ready(function () {
 
             });
     });
+
+    makeButtons();
 
 
 });
