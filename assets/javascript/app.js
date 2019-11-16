@@ -1,22 +1,17 @@
-//TODO 
-
-//style nicely
-//readme.md
-//do bonus content
 
 $(document).ready(function () {
 
-    var topics = ["pizza", "burgers", "ice cream", "cake", "cupcakes", "muffins", "cereal", "pasta", "cookies", "steak", "oranges", "fries", "fried chicken"];
+    var topics = ["pizza", "burgers", "ice cream", "cake", "cupcakes", "muffins", "cereal", "pasta", "cookies", "steak", "oranges", "fries", "fried chicken",
+                  "cotton candy", "coffee", "sandwich"];
 
 
     for (var i = 0; i < topics.length; i++) {
         $(".buttons").append(
             $("<button/>", {
                 text: topics[i],
-                val: topics[i],
                 click: function() {
                     $(".image-display").empty();
-                    var searchVal = $(this).val();
+                    var searchVal = $(this).text();
                     var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +
                         searchVal + "&api_key=Rti16DDOi8KwkyUPSv7rAJca8jFi3Uve&limit=10";
             

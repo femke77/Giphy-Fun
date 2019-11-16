@@ -1,5 +1,6 @@
 body {
     background-color: lightgray;
+    font-family: 'Righteous', cursive;
 }
 
 button {
@@ -17,4 +18,9 @@ button {
 
 .user-add {
     margin-top: 70px;
+
+}
+
+#user-request {
+    width: 380px;
 }
